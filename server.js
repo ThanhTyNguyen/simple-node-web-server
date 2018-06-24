@@ -2,6 +2,9 @@ const express = require('express');
 const fs = require('fs');
 var app = express();
 
+// process.env is an object that stores all our environment variables at key value pair
+const port = process.env.PORT || 3000;
+
 app.use(express.static(__dirname + '/public'));
 
 app.use((req, res, next) => {
@@ -38,6 +41,6 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3000, (req, res) => {
-    console.log('server is running at 3000 port');
+app.listen(port, (req, res) => {
+    console.log(`server is running at port ${port}`);
 });
